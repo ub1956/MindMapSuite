@@ -1,0 +1,55 @@
+MindWeb - Webapp for Mindmap creation
+(c) 2010 Sebastian Muszytowski
+
+licensed under the Creative-Commons-BY-NC-ND license
+http://creativecommons.org/licenses/by-nc-nd/3.0/
+
+This software is divided in to 3 parts.
+
+- MindWeb 
+- MindView
+- MindServer
+
+Please notice that some of the javscript code is licensed under 
+the GNU LGPL due to the fact that this software is a fork of the
+MindWeb project. (http://sourceforge.net/projects/mindweb/)
+Files affected by this license are:
+  mindweb/javascript/mindweb.js
+  mindview/javascript/mindview.js
+
+Parts of this file which not come under the LGPL license are
+marked.
+
+Requirements: 
+
+- HTTP Server with PHP interpreter
+- Cron 
+  - some cronjobs are needed to clean the database
+- PostgreSQL
+  - one can also use a flatfile database (not recommend)
+
+Installation:
+
+The manual way:
+- copy the whole content of mindserver/ to your webroot
+- copy mindview and mindweb folder to your webroot
+- run install.php script
+
+The automatic way:
+- run install.sh (sh install.sh /full/path/to/the/destination/directory)
+- run install.php script
+
+
+Supported webbrowser:
+
+- Internet Explorer 9
+- Firefox 2.0 and up
+- Opera 
+- Safari
+- Chrome
+- and each webbrowser with svg and javascript support
+
+Webbrowser known not working:
+
+- Internet Explorer 4-8
+- text-based webbrowser
