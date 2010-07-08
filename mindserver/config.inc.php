@@ -57,7 +57,14 @@ return array(
 "ldap_return"=>"userPassword",
 // you can use the variable $userinput in your filter
 "ldap_filter"="(&(uid=$userinput))",
-
+// API Access
+// The API access is restricted. One can choose between
+// API-keyauth and LDAP-auth (LDAP needs to be configured
+// right in the section above).
+// allowed values for "api_auth" are "key" and "ldap"
+"api_enabled"=>"true",
+"api_auth"=>"key",
+"api_keys"=>array("firstkey","secondkey","thirdkey"),
 // unless you set this option to true nothing will work
 "configured"=>"false"
 )

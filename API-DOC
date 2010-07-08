@@ -1,0 +1,83 @@
+MindMapSuite Api Documentation
+
+The MindMapSuite API allows users to get full access without using the site.
+The usage of the API can be restricted with LDAP accounts or api-keys.
+One need to configure this in the configuration file!
+
+API usage examples:
+
+The API values can be passed by POST and GET Parameters.
+If the API is restricted by keys the parameter "key" must be used:
+
+  api.php?key=keyone
+
+If the API is restricted by LDAP accounts the "user" and "password"
+parameters are used. Make sure that you have configured the ldap
+settings right so that your user and password will match.
+
+  api.php?user=foo&password=test
+
+The api allows to "remote create" mindmaps with the so called "editkey".
+The editkey is special and allows the reupload of a modified mindmap
+by a client.
+Loading Mindmaps is very easy. Please notice that the settings 
+"inlinejavascript" and "inlinecss" are not affected because 
+JavaScript and CSS Data are always transfered directly in the file.
+
+Loading a MindMap (do not forget to add the auth-information)
+
+  View a MindMap
+   (to view a special revision use rev=revision)
+    api.php?act=view&mapid=<mapid>
+    api.php?act=view&mapid=<mapid>&rev=35
+
+  Edit a MindMap
+
+    api.php?act=edit&mapid=<mapid>
+    api.php?act=edit&mapid=<mapid>&rev=35
+
+  Create a Mindmap
+  (after successfull creation one will be redirected to
+   api.php?act=edit&mapid=<mapid>)
+
+    api.php?act=create
+
+Other Actions:
+
+  ListMindMaps
+  (XML or LIST, nothing means LIST)
+
+    api.php?act=list&type=list
+    api.php?act=list&type=xml
+
+  GetRevisionCount
+
+    api.php?act=getrevisioncount&mapid=<mapid>
+  
+  DeleteMindmap
+  
+    api.php?act=delete&mapid=<mapid>
+
+  Delete MindMap Revision
+
+    api.php?act=delete&mapid=<mapid>&rev=35
+
+  Get MindMap Information
+
+    api.php?act=info&mapid=<mapid>
+
+    Information returned is XML formatted like this:
+    <mapinfo>
+     <title>Title of last revision</title>
+     <revcount>35</revcount>
+    </mapinfo>
+
+
+If you encounter problems with the API make sure that you append the
+auth data well. Here is a list of error codes:
+
+Code | Description
+-----|---------------------
+100  | Auth data missing
+101  | Auth failure
+
