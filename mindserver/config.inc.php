@@ -18,6 +18,10 @@ return array(
 // with Freemind version 0.8.0 and higher
 "enable_import"=>"true",
 "enable_export"=>"true",
+// Hostname,
+// this is used to specify the base tag so that
+// the whole system works out. (style: domain.tld)
+"hostname"=>"subdomain.domain.tld/mindmap",
 // Database related options. You can choose between
 // 3 different Database-Management-Systems.
 // Available dbms are:
