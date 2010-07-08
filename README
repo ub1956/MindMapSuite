@@ -1,12 +1,12 @@
-MindWeb - Webapp for Mindmap creation
-(c) 2010 Sebastian Muszytowski
+MindMapSuite - Webapp for Mindmap creation
+(c) 2010 Sebastian Muszytowski <muzy@muzybot.de>
 
 licensed under the Creative-Commons-BY-NC-ND license
 http://creativecommons.org/licenses/by-nc-nd/3.0/
 
 This software is divided in to 3 parts.
 
-- MindWeb 
+- MindEdit 
 - MindView
 - MindServer
 
@@ -14,25 +14,28 @@ Please notice that some of the javscript code is licensed under
 the GNU LGPL due to the fact that this software is a fork of the
 MindWeb project. (http://sourceforge.net/projects/mindweb/)
 Files affected by this license are:
-  mindweb/javascript/mindweb.js
-  mindview/javascript/mindview.js
+  mindedit/mindedit.js
+  mindedit/mindedit.c.js
+  mindview/mindview.js
+  mindview/mindview.c.js
+  
+  and all files which delivers those files.
 
-Parts of this file which not come under the LGPL license are
+Parts of this file which are not shipped under the LGPL license are
 marked.
 
 Requirements: 
 
 - HTTP Server with PHP interpreter
 - Cron 
-  - some cronjobs are needed to clean the database
-- PostgreSQL
+  - some cronjobs are needed to clean the database regularly
+- PostgreSQL or SQLite
   - one can also use a flatfile database (not recommend)
 
 Installation:
 
 The manual way:
-- copy the whole content of mindserver/ to your webroot
-- copy mindview and mindweb folder to your webroot
+- copy everything to your webroot
 - run install.php script
 
 The automatic way:
@@ -40,16 +43,52 @@ The automatic way:
 - run install.php script
 
 
-Supported webbrowser:
+Supported webbrowser (native support):
 
 - Internet Explorer 9
-- Firefox 2.0 and up
-- Opera 
-- Safari
-- Chrome
+- Firefox versions since 2005
+- Opera 8.0 and up
+- Safari version since 2006
+- Chrome version since 2006
 - and each webbrowser with svg and javascript support
+
+Supported webbrowser (available by workaround)
+
+- Internet Explorer 6,7,8 with the "Google Chrome Frame" Extension
+  (http://code.google.com/chrome/chromeframe/)
 
 Webbrowser known not working:
 
-- Internet Explorer 4-8
+- Internet Explorer 6,7,8 without the "Google Chrome Frame" Extension
+- Fennec versions up to 1.1
 - text-based webbrowser
+
+
+Hints:
+
+- There are several methods to increase page processing speed.
+  Server side:
+    - enable a PHP cache so that the script is cached
+      (eAccelerator is recommend)
+    - on busy system one can increase the speed by increasing
+      the amount of webserver/php processes
+  Client side:
+    - by enabling the "one file" option in config.inc.php
+      (this puts the whole css and javascript into the
+       delivered html file and speeds up page processing
+       up to three times.)
+    - make the user use a webbrowser with a fast javascript-engine
+      included. For instance "Google Chrome".
+    - make the user use a webcache. This can decrease the load and
+      processing-time of editable MindMaps (with MindEdit)  
+
+- To increase the database read/write speed create the database
+  in the memory of the computer and mirror it a few times a day 
+  as needed. This will increase the read write performance of the
+  database.
+  
+- If you want to use this project in a commercial environment feel
+  free to contact me. We'll search for a proper solution.
+  
+- Send patches! Patches (especially those which are aimed to increase
+  the speed) are appreciated!

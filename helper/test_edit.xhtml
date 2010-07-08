@@ -1,0 +1,40 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>foobar</title>
+<link href="style.comp.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="mindedit.js"></script>
+<!--<script type="text/javascript" src="mindview.js"></script>-->
+<script type="text/javascript">
+<![CDATA[
+function init() {
+
+var yTree = new YTree();
+rNode = yTree.createRootNode("New MindMap");
+var yView = new YView(yTree, document.getElementById("panelDOM"),document.getElementById("panelSVG"));
+
+yView.tree.SetMapID("1");
+yView.tree.SetEditKey("1");
+yView.setContentTitle("foo");
+
+yView.tree.loadFromXML(decode());
+yView.redrawTree();
+}
+
+function decode() {
+  var encoded = document.getElementById('data').innerHTML;
+  var data = decodeURIComponent(encoded.replace(/\+/g,  " "));
+  return data;
+}
+]]>
+</script>
+</head>
+<body style="margin:0px" onload="init();">
+<div id="panelDOM" style="position:absolute;width:99%;height:99%;margin:0px;padding:0px;overflow:visible;border:solid 1px white;">
+<svg id="panelSVG" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+</svg>
+</div>
+<div id="data" style="display:none;">%3Cmap%20version%3D%220.8.0%22%3E%3Cnode%20TEXT%3D%22Eine%20Mindmap%22%3E%3C%2Fnode%3E%3C%2Fmap%3E</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+        ServerName REPLACE_THIS
+        <IfModule mpm_peruser_module>
+                ServerEnvironment apache apache
+        </IfModule>
+
+        DocumentRoot DIR/htdocs
+        ScriptAlias /cgi-bin/ "/srv/www/DIR/cgi-bin/"
+        ErrorLog DIR/logs/error.log
+        CustomLog DIR/logs/access.log combined
+
+ 	<Directory DIR/htdocs>
+          AllowOverride Indexes FileInfo Options AuthConfig
+          Options +Indexes +FollowSymLinks
+          Order allow,deny
+          Allow from all
+        </Directory>
+
+        <Directory DIR/cgi-bin>
+          AllowOverride None
+          Options None
+          Order allow,deny
+          Allow from all
+        </Directory>
+
+
+</VirtualHost>
